@@ -18,7 +18,7 @@ export class FadeInScrollAnimation extends ScrollAnimation {
             const stAttributes = new ScrollTriggerAttributes(element);
             const tlAttributes = new TimelineAttributes(element);
 
-            const tl = gsap.timeline({ paused: true });
+            const tl = gsap.timeline({ paused: true, delay: tlAttributes.delay });
             this._timelines.push(tl);
             tl.from(element, {
                 opacity: 0,

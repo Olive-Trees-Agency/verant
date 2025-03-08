@@ -39,7 +39,7 @@ class TextSlideUpScrollAnimation extends ScrollAnimation {
             // Disable overflow of text lines for animation effect
             gsap.set(element.querySelectorAll('.text-line'), { overflow: 'hidden' });
 
-            const tl = gsap.timeline({ paused: true });
+            const tl = gsap.timeline({ paused: true, delay: tlAttributes.delay });
             this._timelines.push(tl);
             tl.from(element.querySelectorAll(this._scope === 'characters' ? '.char' : '.word'), {
                 opacity: 0,

@@ -1,10 +1,11 @@
 import { MobileMenuAnimation, NavigationTransitionAnimation, CharsSlideUpScrollAnimation, WordsSlideUpScrollAnimation, FadeInScrollAnimation } from "$animations";
 import { Cursor } from "$interactions";
+import { matchMobileAll } from '$utils';
 
 
 export class Page {
     // Animations
-    protected readonly _mobileNavigationAnimation: MobileMenuAnimation;
+    protected _mobileNavigationAnimation?: MobileMenuAnimation;
     protected readonly _navigationTransitionAnimation: NavigationTransitionAnimation
     protected readonly _charsSlideUpScrollAnimation?: CharsSlideUpScrollAnimation;
     protected readonly _wordsSlideUpScrollAnimation?: WordsSlideUpScrollAnimation;
@@ -21,7 +22,16 @@ export class Page {
      */
     constructor() {
         // 01. Register core animations
-        this._mobileNavigationAnimation = new MobileMenuAnimation();
+        if (matchMobileAll.matches) {
+            this._mobileNavigationAnimation = new MobileMenuAnimation();
+        }
+        matchMobileAll.addEventListener('change', (e) => {
+            if (e.matches) {
+                this._mobileNavigationAnimation = new MobileMenuAnimation();
+            } else {
+                this._mobileNavigationAnimation?.dispose();
+            }
+        });
         this._cursorInteraction = new Cursor();
 
         // 02. Only register these animations when the device is performant enough.
@@ -50,7 +60,7 @@ export class Page {
      * If the page has already finished loading once, the animation will not replay.
      */
     protected finishLoading() {
-        // if (!this._isLoaded) this._navigationTransitionAnimation.playPageTransition('out');
+        if (!this._isLoaded) this._navigationTransitionAnimation.playPageTransition('out');
         this._isLoaded = true;
     }
 }

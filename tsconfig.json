@@ -4,8 +4,39 @@
     "rootDir": ".",
     "baseUrl": "./",
     "paths": {
-      "$utils/*": ["src/utils/*"]
+      "$utils/*": [
+        "src/utils/*"
+      ],
+      "$utils": [
+        "src/utils"
+      ],
+      "$styles/*": [
+        "src/styles/*"
+      ],
+      "$animations/*": [
+        "src/animations/*"
+      ],
+      "$animations": [
+        "src/animations"
+      ],
+      "$interactions/*": [
+        "src/interactions/*"
+      ],
+      "$interactions": [
+        "src/interactions"
+      ],
+      "$models/*": [
+        "src/models/*"
+      ],
+      "$pages/*": [
+        "src/pages/*"
+      ],
+      "$pages": [
+        "src/pages"
+      ],
     },
-    "types": ["@finsweet/ts-utils"]
+    "types": [
+      "@finsweet/ts-utils"
+    ]
   }
 }

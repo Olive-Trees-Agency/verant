@@ -11,6 +11,7 @@ typings/
 
 # Optional npm cache directory
 .npm
+.pnpm-store
 
 # Optional eslint cache
 .eslintcache

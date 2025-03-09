@@ -26,13 +26,13 @@ export class NavigationTransitionAnimation {
         // Create timeline
         this.tl = gsap.timeline({ paused: true });
         this.tl.add('start');
-        this.tl.fromTo(
-            this.PAGE_TRANSITION_LOGO,
-            // !!! These default values should also be set the head of the website to avoid flickering !!!
-            { opacity: 0 },
-            { opacity: 1 },
-            'start'
-        );
+        // this.tl.fromTo(
+        //     this.PAGE_TRANSITION_LOGO,
+        //     // !!! These default values should also be set the head of the website to avoid flickering !!!
+        //     { opacity: 0 },
+        //     { opacity: 1 },
+        //     'start'
+        // );
         this.tl.fromTo(
             this.PAGE_TRANSITION_WRAPPER,
             // !!! These default values should also be set the head of the website to avoid flickering !!!

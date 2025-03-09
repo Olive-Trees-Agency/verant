@@ -34,9 +34,9 @@ export class FadeInScrollAnimation extends ScrollAnimation {
                     end: stAttributes.end,
                     markers: false,
                     onEnter: () => tl.play(),
-                    onLeave: () => tl.reverse(),
-                    onEnterBack: () => tl.play(),
-                    onLeaveBack: () => tl.reverse(),
+                    onLeave: stAttributes.direction == 'both' ? () => tl.reverse() : undefined,
+                    onEnterBack: stAttributes.direction == 'both' ? () => tl.play() : undefined,
+                    onLeaveBack: stAttributes.direction == 'both' ? () => tl.reverse() : undefined,
                 })
             );
         });

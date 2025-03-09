@@ -2,6 +2,7 @@ export class ScrollTriggerAttributes {
     public id?: string;
     public begin?: string;
     public end?: string;
+    public direction?: 'forward' | 'both';
 
     /**
      * Gets all possible HTML attributes related to a ScrollTrigger.
@@ -11,6 +12,7 @@ export class ScrollTriggerAttributes {
             (element.getAttribute('scroll-trigger-id') || element.getAttribute('id')) ?? undefined;
         this.begin = element.getAttribute('begin') ?? undefined;
         this.end = element.getAttribute('end') ?? undefined;
+        this.direction = element.getAttribute('direction') as 'forward' | 'both' ?? 'forward';
     }
 }
 

@@ -1,4 +1,12 @@
-import { MobileMenuAnimation, NavigationTransitionAnimation, CharsSlideUpScrollAnimation, WordsSlideUpScrollAnimation, FadeInScrollAnimation } from "$animations";
+import {
+    MobileMenuAnimation,
+    NavigationTransitionAnimation,
+    CharsSlideUpScrollAnimation,
+    WordsSlideUpScrollAnimation,
+    FadeInScrollAnimation,
+    CharsStaggeredFadeScrollAnimation,
+    WordsStaggeredFadeScrollAnimation
+} from "$animations";
 import { Cursor } from "$interactions";
 import { matchMobileAll } from '$utils';
 
@@ -10,6 +18,8 @@ export class Page {
     protected readonly _charsSlideUpScrollAnimation?: CharsSlideUpScrollAnimation;
     protected readonly _wordsSlideUpScrollAnimation?: WordsSlideUpScrollAnimation;
     protected readonly _fadeInScrollAnimation?: FadeInScrollAnimation;
+    protected readonly _charsStaggeredFadeAnimation?: CharsStaggeredFadeScrollAnimation;
+    protected readonly _wordsStaggeredFadeAnimation?: WordsStaggeredFadeScrollAnimation;
     // Interactions
     protected readonly _cursorInteraction: Cursor;
 
@@ -39,6 +49,8 @@ export class Page {
             this._charsSlideUpScrollAnimation = new CharsSlideUpScrollAnimation();
             this._wordsSlideUpScrollAnimation = new WordsSlideUpScrollAnimation();
             this._fadeInScrollAnimation = new FadeInScrollAnimation();
+            this._charsStaggeredFadeAnimation = new CharsStaggeredFadeScrollAnimation();
+            this._wordsStaggeredFadeAnimation = new WordsStaggeredFadeScrollAnimation();
         }
 
         // 03. Initialize page transition last to ensure everything is loaded properly

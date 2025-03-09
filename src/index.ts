@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { Page } from "$pages";
+import { Page, DienstenPage } from "$pages";
 
 window.Webflow ||= [];
 gsap.registerPlugin(ScrollTrigger);
@@ -14,8 +14,9 @@ window.Webflow.push(() => {
     // case '/home':
 
     //   break;
-    // case '/diensten':
-
+    case '/diensten':
+      new DienstenPage();
+      break;
     default:
       new Page();
       break;

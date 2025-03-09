@@ -53,8 +53,7 @@ export class MobileMenuAnimation {
             },
             {
                 yPercent: 0,
-                display: 'flex',
-                ease: 'circ.out(2)'
+                display: 'flex'
             },
             'start'
         );

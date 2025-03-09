@@ -1,5 +1,5 @@
 import { Page } from './page';
-import { HorizontalSlideshow } from '$interactions';
+import { SwiperSlideshow } from '$interactions';
 
 export class ProjectenPage extends Page {
 
@@ -9,7 +9,7 @@ export class ProjectenPage extends Page {
     constructor() {
         super();
 
-        new HorizontalSlideshow(2, 'running-projects');
+        new SwiperSlideshow(0, 'running-projects');
 
         this.finishLoading();
     }

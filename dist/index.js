@@ -12179,7 +12179,6 @@
       this._list = document.querySelector(`[${this.LIST_ATTRIBUTE}=${id}]`);
       this._listItems = document.querySelectorAll(`[${this.LIST_ITEM_ATTRIBUTE}=${id}]`);
       this._gap = gap;
-      console.log(this._buttonNext);
       this._list?.classList.add("swiper-wrapper");
       this._listItems?.forEach((item) => {
         item.classList.add("swiper-slide");

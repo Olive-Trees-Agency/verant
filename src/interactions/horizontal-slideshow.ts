@@ -1,5 +1,7 @@
 import { gsap } from 'gsap';
 
+import { debounce, rem2Px } from '$utils';
+
 export class HorizontalSlideshow {
     private LIST_ATTRIBUTE = 'slideshow-list';
     private LIST_ITEM_ATTRIBUTE = 'slideshow-item';
@@ -20,7 +22,7 @@ export class HorizontalSlideshow {
 
     /**
      * Initialize a horizontal slideshow.
-     * @param gap The gap to maintain between the list items.
+     * @param gap The gap to maintain between the list items in rem.
      * @param id The ID, used to enable multiple instances on one page.
      */
     constructor(gap: number, id: string) {
@@ -43,9 +45,10 @@ export class HorizontalSlideshow {
         const listWidth = this._list.scrollWidth;
         const listViewportWidth = this._list.offsetWidth;
         this._itemWidth = this._listItem.offsetWidth;
-        const itemsInView = Math.max(listViewportWidth / (this._itemWidth + this._gap));
+        const pxGap = rem2Px(this._gap);
+        const itemsInView = Math.max(listViewportWidth / (this._itemWidth + pxGap));
 
-        this._maxLeftScroll = Math.max(listWidth / (this._itemWidth + this._gap)) - itemsInView;
+        this._maxLeftScroll = Math.max(listWidth / (this._itemWidth + pxGap)) - itemsInView;
         this._maxRightScroll = 0;
 
         this._buttonLeft.onclick = () => {
@@ -54,26 +57,47 @@ export class HorizontalSlideshow {
         this._buttonRight.onclick = () => {
             this.buttonRightClickHandler();
         };
+
+        gsap.set(this._buttonLeft, { opacity: 0.5, cursor: 'not-allowed' });
+
+        window.addEventListener(
+            'resize',
+            debounce(() => {
+                this.reload();
+            }, 500)
+        );
     }
 
     private buttonLeftClickHandler() {
-        if (this._maxRightScroll > 0) {
+        if (Math.floor(this._maxRightScroll) > 0) {
             this.scroll('+');
             this._maxLeftScroll += 1;
             this._maxRightScroll -= 1;
+
+            gsap.set(this._buttonRight, { opacity: 1, cursor: 'pointer' });
+
+            if (Math.floor(this._maxRightScroll) == 0) {
+                gsap.set(this._buttonLeft, { opacity: 0.5, cursor: 'not-allowed' });
+            }
         }
     }
 
     private buttonRightClickHandler() {
-        if (this._maxLeftScroll > 0) {
+        if (Math.floor(this._maxLeftScroll) > 0) {
             this.scroll('-');
             this._maxLeftScroll -= 1;
             this._maxRightScroll += 1;
+
+            gsap.set(this._buttonLeft, { opacity: 1, cursor: 'pointer' });
+
+            if (Math.floor(this._maxLeftScroll) == 0) {
+                gsap.set(this._buttonRight, { opacity: 0.5, cursor: 'not-allowed' });
+            }
         }
     }
 
     private scroll(direction: '-' | '+') {
-        const translationDistance = Math.floor(this._itemWidth + this._gap);
+        const translationDistance = Math.floor(this._itemWidth + rem2Px(this._gap));
         if (this._scrollTween) this._scrollTween.progress(1);
         this._scrollTween = gsap.to(this._list, {
             x: `${direction}=${translationDistance}`,

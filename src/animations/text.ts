@@ -133,7 +133,7 @@ export class WordsSlideUpScrollAnimation extends TextSlideUpScrollAnimation {
     }
 }
 
-class TextStaggeredFadeInScrollAnimation extends TextSplitScrollAnimation {
+class TextFadeInScrollAnimation extends TextSplitScrollAnimation {
     /**
      * Create a `TextStaggeredFadeScrollAnimation`.
      * @param textElementSelector The HTML selector used to get all text elements on which the animation will be applied.
@@ -173,9 +173,9 @@ class TextStaggeredFadeInScrollAnimation extends TextSplitScrollAnimation {
     }
 }
 
-export class CharsStaggeredFadeScrollAnimation extends TextStaggeredFadeInScrollAnimation {
+export class CharsFadeInScrollAnimation extends TextFadeInScrollAnimation {
     /**
-     * Registers the `CharsStaggeredFadeScrollAnimation` on all elements with the `chars-staggered-fade` HTML attribute.
+     * Registers the `CharsFadeInScrollAnimation` on all elements with the `chars-fade-in` HTML attribute.
      *
      * Optional HTML attributes:
      * - id
@@ -185,13 +185,13 @@ export class CharsStaggeredFadeScrollAnimation extends TextStaggeredFadeInScroll
      * - stagger (defaults to 0.5)
      */
     constructor() {
-        super('[chars-staggered-fade]', 'characters');
+        super('[chars-fade-in]', 'characters');
     }
 }
 
-export class WordsStaggeredFadeScrollAnimation extends TextStaggeredFadeInScrollAnimation {
+export class WordsFadeInScrollAnimation extends TextFadeInScrollAnimation {
     /**
-     * Registers the `WordsStaggeredFadeScrollAnimation` on all elements with the `words-staggered-fade` HTML attribute.
+     * Registers the `WordsFadeInScrollAnimation` on all elements with the `words-fade-in` HTML attribute.
      *
      * Optional HTML attributes:
      * - id
@@ -201,6 +201,6 @@ export class WordsStaggeredFadeScrollAnimation extends TextStaggeredFadeInScroll
      * - stagger (defaults to 0.5)
      */
     constructor() {
-        super('[words-staggered-fade]', 'words');
+        super('[words-fade-in]', 'words');
     }
 }

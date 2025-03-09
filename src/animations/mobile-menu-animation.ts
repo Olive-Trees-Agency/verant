@@ -50,12 +50,10 @@ export class MobileMenuAnimation {
             {
                 yPercent: -100,
                 display: 'none',
-                translateY: '-100%'
             },
             {
                 yPercent: 0,
                 display: 'flex',
-                translateY: '-0%',
                 ease: 'circ.out(2)'
             },
             'start'

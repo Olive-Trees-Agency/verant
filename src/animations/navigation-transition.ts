@@ -24,7 +24,7 @@ export class NavigationTransitionAnimation {
             });
         });
         // Create timeline
-        this.tl = gsap.timeline({ paused: true });
+        this.tl = gsap.timeline({ paused: true, defaults: { ease: 'expo' } });
         this.tl.add('start');
         // this.tl.fromTo(
         //     this.PAGE_TRANSITION_LOGO,
@@ -39,14 +39,12 @@ export class NavigationTransitionAnimation {
             {
                 yPercent: 0,
                 display: 'flex',
-                ease: 'expo'
             },
             {
                 yPercent: -101,
                 display: 'none',
                 duration: 1,
                 delay: 0.25,
-                ease: 'expo'
             },
             'start'
         );

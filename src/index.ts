@@ -11,9 +11,11 @@ window.Webflow.push(() => {
 
   switch (currentPath) {
     case '/diensten':
+    case '/en/diensten':
       new DienstenPage();
       break;
     case '/projecten':
+    case '/en/projecten':
       new ProjectenPage();
       break;
     default:
